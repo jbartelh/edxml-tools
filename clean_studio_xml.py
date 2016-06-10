@@ -51,7 +51,7 @@ def main():
     parser.add_argument("base", help="Base directory of Studio-dumped XML")
     args = parser.parse_args()
 
-    clean_studio_xml(args.base)
+    clean(args.base)
 
 
 if __name__ == '__main__':
