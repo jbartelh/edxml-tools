@@ -12,7 +12,7 @@ setup(name='XmlStudioCleaner',
           'youtube-dl'],
       entry_points={
           'console_scripts': [
-              'xmlstudioclean = src.clean_studio_xml:main',
+              'xmlstudioclean = clean_studio_xml:main',
           ],
       })
 
