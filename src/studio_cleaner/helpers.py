@@ -230,7 +230,10 @@ def save_tree(basepath, tree):
     for e in tree.findall(".//problem"):
         if 'url_name' not in e.attrib:
             continue
-        problemfile = open(os.path.join(basepath, 'problem/{problem}.xml'.format(problem=e.attrib["url_name"])), "w")
+        probname = e.attrib["url_name"]
+        extpath = 'problem/{problem}.xml'.format(problem=probname.encode('utf-8'))
+        problemfile = open(os.path.join(basepath, extpath), "w")
+        #problemfile.write(ET.tostring(e, encoding='utf-8'))
         problemfile.write(ET.tostring(e))
         problemfile.close()
         del e._children[:]
@@ -239,7 +242,9 @@ def save_tree(basepath, tree):
             if key != 'url_name':
                 del e.attrib[key]
 
-    output = ET.tostring(tree.getroot()) # TODO: Tounicode
+    # TODO: To unicode
+    #output = ET.tostring(tree.getroot(), encoding='utf-8')
+    output = ET.tostring(tree.getroot())
     output_file = open(os.path.join(basepath, 'course.xml'), "wb")
     md = xml.dom.minidom.parseString(output)
     pxml = md.toprettyxml(indent='  ')
