@@ -1,7 +1,7 @@
 from setuptools import setup
 
 setup(name='XmlStudioCleaner',
-      version='1.0.3',
+      version='1.0.4',
       packages=[
           'studio_cleaner'
       ],
