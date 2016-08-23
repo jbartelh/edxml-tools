@@ -150,8 +150,32 @@ def _url_slug_encode(s):
     new_string = new_string.replace("_____", "_")
     new_string = new_string.replace("___", "_")
     new_string = new_string.replace("__", "_")
+    
+    # Step 4: Replace German-Unicode characters with the equivalent ascii characters
+    new_string = _replace_ger_chars(new_string)
 
     return new_string
+def _replace_ger_chars(s):
+    '''
+    replaces the wierd german char
+    '\xe4 \xf6 \xfc \xc4 \xd6 \xdc \xdf'
+    '''
+    
+    #s = s.decode('utf-8')
+    
+    s = s.replace(u'\xe4', 'ae')
+    s = s.replace(u'\xf6', 'oe')
+    s = s.replace(u'\xfc', 'ue')
+    
+    s = s.replace(u'\xc4', 'Ae')
+    s = s.replace(u'\xd6', 'Oe')
+    s = s.replace(u'\xdc', 'Ue')
+    
+    s = s.replace(u'\xdf', 'ss')
+    
+    #s = s.encode()
+    print s
+    return s
 
 used_url_names = set()
 def _make_unique_url_slug(s):
