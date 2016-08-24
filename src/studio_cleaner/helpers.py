@@ -174,7 +174,6 @@ def _replace_ger_chars(s):
     s = s.replace(u'\xdf', 'ss')
     
     #s = s.encode()
-    print s
     return s
 
 used_url_names = set()
